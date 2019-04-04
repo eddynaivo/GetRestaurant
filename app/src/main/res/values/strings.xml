@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GetRestaurant</string>
+    <string name="welcome_text">Welcome To EN\n Restaurant Reservation\nApplication</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
