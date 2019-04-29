@@ -14,6 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText userEmail;
     EditText userPassword;
     Button btnLogin,btnRegister;
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         userPassword=findViewById(R.id.password);
         btnLogin=findViewById(R.id.login);
         btnRegister=findViewById(R.id.register);
-
+//        instatiating the class database helper
+databaseHelper=new DatabaseHelper(this);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setUserRegister(userEmail.getText().toString(),userPassword.getText().toString());
+                setUserRegister();
             }
         });
     }
@@ -45,26 +47,24 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         else {
-            Intent homeIntent=new Intent(getApplicationContext(),HotelActivity.class);
-            startActivity(homeIntent);
-            LoginActivity.this.finish();
-
+            boolean getUser=databaseHelper.checkUserInfo(mail, pass);
+            if (getUser==true) {
+                Intent homeIntent = new Intent(getApplicationContext(), HotelActivity.class);
+                startActivity(homeIntent);
+                LoginActivity.this.finish();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Sorry you dont have an account with the application\n Click Register to create new account", Toast.LENGTH_SHORT).show();
+            }
 
         }
     }
     //CREATING THE USER RESISTER METHOD
-    public void setUserRegister(String mail,String pass){
-        if (TextUtils.isEmpty(mail)|| TextUtils.isEmpty(pass)){
-            Toast.makeText(getApplicationContext(),"Cannot Register Empty Fields",Toast.LENGTH_SHORT).show();
-        }
-        else if (pass.length()<8){
-            userPassword.setError("The password must contain atleast 8 characters");
-        }
-
-        else {
+    public void setUserRegister(){
+       Intent intent=new Intent(getApplicationContext(),RegisterActivity.class);
+       startActivity(intent);
 
 
-        }
 
     }
 
