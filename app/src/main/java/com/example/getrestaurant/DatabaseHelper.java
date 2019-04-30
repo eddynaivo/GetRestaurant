@@ -45,6 +45,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
              return false;
         }
     }
+//    checking for the account existance to avoid redudance in login
+   public  boolean checkUserCredentials( String name){
+         SQLiteDatabase db=this.getReadableDatabase();
+         Cursor cursor=db.rawQuery("SELECT username from users where username=?",new String[]{name});
+         if (cursor.getCount()>0){
+             return true;
+         }
+         else{
+             return  false;
+         }
+
+    }
 
 }
 

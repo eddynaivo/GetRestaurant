@@ -44,19 +44,23 @@ databaseHelper=new DatabaseHelper(this);
         else if (!pass.equals(conf)){
             Toast.makeText(getApplicationContext(), "The password confirmation failed \n PLease try again", Toast.LENGTH_LONG).show();
         }
-        else{
-boolean send=databaseHelper.sendData(name,pass);
-if (send==true){
-    Toast.makeText(getApplicationContext(),"Account has been created successfull",Toast.LENGTH_LONG).show();
-    username.setText("");
-    password.setText("");
-    confirm.setText("");
-    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-}
-else{
-    System.out.println(Toast.makeText(getApplicationContext(), "Sorry something went wrong while adding your account\nPlease try again", Toast.LENGTH_LONG));
-}
+        else {
+            boolean check = databaseHelper.checkUserCredentials(name);
+            if (check == true) {
+                Toast.makeText(getApplicationContext(),"Sorry User with such account already exist\n Please try again with another account",Toast.LENGTH_LONG).show();
 
+            } else {
+                boolean send = databaseHelper.sendData(name, pass);
+                if (send == true) {
+                    Toast.makeText(getApplicationContext(), "Account has been created successfully", Toast.LENGTH_LONG).show();
+                    username.setText("");
+                    password.setText("");
+                    confirm.setText("");
+                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                } else {
+                    System.out.println(Toast.makeText(getApplicationContext(), "Sorry something went wrong while adding your account\nPlease try again", Toast.LENGTH_LONG));
+                }
+            }
         }
 
     }

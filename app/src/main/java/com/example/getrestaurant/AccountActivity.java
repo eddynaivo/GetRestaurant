@@ -34,10 +34,6 @@ private ContactUsFragment contactUsFragment;
     public boolean onOptionsItemSelected(MenuItem item) {
         int click=item.getItemId();
         switch (click){
-            case R.id.help:
-                return  true;
-            case R.id.feedback:
-                return true;
             case R.id.account:
                 setFragment(userAccountFragment);
                 return true;

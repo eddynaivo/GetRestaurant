@@ -1,26 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_purple"
-    tools:context=".UserAccountFragment">
+    android:orientation="vertical"
+     tools:context=".UserAccountFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="245dp">
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:layout_marginStart="100dp"
-        android:text="Eddy Naio Uganda"
-        android:textSize="20dp" />
+        android:layout_width="300dp"
+        android:layout_marginLeft="25dp"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:paddingVertical="10dp"
+        android:textAllCaps="true"
+        android:background="@android:color/black"
+        android:text="Set Your Meal For Remembrance"
+        android:layout_height="40dp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="141dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="150dp"
-        android:layout_height="122dp"
-        android:src="@drawable/user_icon" />
-</FrameLayout>
+
+      <EditText
+          android:id="@+id/food"
+          android:hint="Save Your Food"
+          android:layout_width="300dp"
+          android:layout_marginTop="5dp"
+          android:background="@android:color/white"
+          android:layout_marginLeft="25dp"
+          android:layout_height="45dp" />
+        <EditText
+            android:id="@+id/sauce"
+            android:hint="Save Your Sauce"
+            android:layout_width="300dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/white"
+            android:layout_marginLeft="25dp"
+            android:layout_height="45dp" />
+        <EditText
+            android:id="@+id/drink"
+            android:hint="Save Your Drink"
+            android:layout_width="300dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/white"
+            android:layout_marginLeft="25dp"
+            android:layout_height="45dp" />
+        <Button
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:text="SAVE NOW"
+            android:id="@+id/save"
+            android:textColor="@android:color/white"
+            android:background="@android:color/black"
+            android:layout_width="300dp"
+            android:layout_height="45dp" />
+    </LinearLayout>
+
+        <ListView
+            android:id="@+id/mymeal"
+            android:layout_width="match_parent"
+            android:layout_height="500dp" />
+
+
+</LinearLayout>

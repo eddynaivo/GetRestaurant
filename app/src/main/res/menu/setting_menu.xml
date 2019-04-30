@@ -4,7 +4,7 @@
 
 
     <item android:id="@+id/account"
-    android:title="Account"
+    android:title="My set Meals"
     app:showAsAction="never"
     />
     <item
@@ -12,12 +12,9 @@
         android:title="Contact Us"
         app:showAsAction="never" />
     <item
-        android:id="@+id/feedback"
-        android:title="Feedback"
+        android:id="@+id/update"
+        android:title="Change Meal Structure"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/help"
-        android:title="Help"
-        app:showAsAction="never" />
+
 
 </menu>

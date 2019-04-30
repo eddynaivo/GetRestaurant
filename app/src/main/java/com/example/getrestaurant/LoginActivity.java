@@ -1,6 +1,8 @@
 package com.example.getrestaurant;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,11 +17,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText userPassword;
     Button btnLogin,btnRegister;
     DatabaseHelper databaseHelper;
+    GetConnection getConnection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getConnection=new GetConnection();
         userEmail=findViewById(R.id.email);
         userPassword=findViewById(R.id.password);
         btnLogin=findViewById(R.id.login);
@@ -63,9 +67,18 @@ databaseHelper=new DatabaseHelper(this);
     public void setUserRegister(){
        Intent intent=new Intent(getApplicationContext(),RegisterActivity.class);
        startActivity(intent);
-
-
-
     }
 
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(getConnection,intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(getConnection);
+        super.onStop();
+    }
 }
